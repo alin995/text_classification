@@ -6,7 +6,7 @@ from transformers import pipeline, AutoConfig
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tuned model for text classification task")
-    parser.add_argument("--cp", type=str, default="800", )
+    parser.add_argument("--cp", type=str, default="200", )
     args = parser.parse_args()
     return args
 
