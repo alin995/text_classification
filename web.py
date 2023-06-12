@@ -44,14 +44,6 @@ def main():
     )
     demo.queue().launch(server_name="0.0.0.0", server_port=18080)
 
-    # interface = gr.Interface.from_pipeline(
-    #     classifier,
-    #     title=title,
-    #     description=description,
-    #     examples=examples
-    # )
-    # interface.launch(server_name="0.0.0.0", server_port=18080)
-
 
 if __name__ == "__main__":
     main()
