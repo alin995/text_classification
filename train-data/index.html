@@ -25,15 +25,12 @@
       let labels = item.lable.split(',')
       const formatLables = labels.map(ite => {
         const lableItem = labelOptions.find(opt => {
-          // console.log('----',ite);
           return opt.label === ite
         })
-        // console.log(lableItem)
         return lableItem.id
       })
       item.lable = formatLables
     })
-    console.log('option',labelOptions);
     console.log(optData)
 
   </script>
