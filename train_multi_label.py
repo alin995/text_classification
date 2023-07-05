@@ -11,7 +11,6 @@ model_name = "hfl/chinese-bert-wwm-ext" # 所使用模型
 dataset = load_dataset("json", data_files=data_file, cache_dir='cache')
 dataset = dataset["train"]
 dataset = dataset.filter(lambda x: x["title"] is not None)
-# datasets = dataset["train"].train_test_split(0.2)
 
 # 数据集处理
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -27,9 +26,7 @@ def normalize_dataset(sample):
   normalized_sample['label'] = labels
   return normalized_sample
 
-
 dataset = dataset.map(normalize_dataset, batched=True)
-# tokenized_datasets = datasets.map(process_function, batched=True)
 
 def process_function(examples):
   tokenized_examples = tokenizer(examples["title"], max_length=64, truncation=True)
@@ -39,17 +36,8 @@ def process_function(examples):
 
 
 # 构建评估函数
-# accuracy_metric = evaluate.load("accuracy")
-# def accuracy_metric(eval pred):
-# predictions, labels = eval_pred
-# fn_loss = torch.nn.MultiLabelSoftMarginLoss(reduction='mean')
-# loss = fn_loss(torch.from_numpy(predictions), torch.from_numpy(labels))
-# return {"loss": loss}
-
 def compute_metrics(eval_pred):
   predictions, labels = eval_pred
-  # predictions = predictions.argmax(axis=-1)
-  # return accuracy_metric.compute(predictions=predictions, references=labels)
   fn_loss = torch.nn.MultiLabelSoftMarginLoss(reduction='mean')
   loss = fn_loss(torch.from_numpy(predictions), torch.from_numpy(labels))
   return {"loss": loss}
