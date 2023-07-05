@@ -74,4 +74,4 @@ trainer = Trainer(
 # 训练与评估
 trainer.train()
 
-trainer.evaluate()
+#trainer.evaluate()
