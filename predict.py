@@ -12,7 +12,6 @@ def parse_args():
 
 
 def main():
-    #args = parse_args()
     model_name_or_path = "./model_for_seqclassification/checkpoints/checkpoint-200/"
     classifier = pipeline(task="text-classification", model=model_name_or_path, tokenizer=model_name_or_path)
     result = classifier("苹果", top_k=4)
